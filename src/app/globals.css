@@ -228,25 +228,23 @@
   }
 
 
-  /* Entrance reveal. The hidden state applies ONLY once RevealController has
-     confirmed that scripts run and that motion is welcome, so the default
-     render is always the complete, visible page. */
-  .reveal { opacity: 1; }
-
-  [data-reveal="on"] .reveal {
-    opacity: 0;
-    transform: translateY(18px);
+  /* Entrance reveal.
+     Nothing here hides content on its own. RevealController adds `is-pending`
+     only to elements its IntersectionObserver has confirmed are off screen, so
+     a page rendered without JavaScript, or before the script runs, or while the
+     router is mid-navigation, is always complete and readable. */
+  .reveal {
     transition:
       opacity 0.7s var(--ease-out-editorial),
       transform 0.7s var(--ease-out-editorial);
     transition-delay: var(--reveal-delay, 0s);
-    will-change: opacity, transform;
   }
 
-  [data-reveal="on"] .reveal.is-revealed {
-    opacity: 1;
-    transform: none;
-    will-change: auto;
+  .reveal.is-pending {
+    opacity: 0;
+    transform: translateY(18px);
+    /* Only the elements actually waiting to animate get promoted to a layer. */
+    will-change: opacity, transform;
   }
 
   .text-balance { text-wrap: balance; }

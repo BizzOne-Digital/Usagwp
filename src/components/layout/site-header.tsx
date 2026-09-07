@@ -55,68 +55,77 @@ export function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/92 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-5 md:h-[72px] lg:px-10">
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 rounded-sm"
-          aria-label="USAGWP home"
-        >
-          <BrandMark className="h-7 w-7 text-brand" />
-          <span className="font-display text-lg font-semibold tracking-[0.16em] text-fg">
-            USAGWP
-          </span>
-        </Link>
-
-        <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-7">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={cn(
-                    "relative py-1 text-sm transition-colors",
-                    isActive(item.href)
-                      ? "text-fg"
-                      : "text-fg-muted hover:text-fg",
-                  )}
-                >
-                  {item.label}
-                  {isActive(item.href) ? (
-                    <span
-                      aria-hidden
-                      className="absolute -bottom-0.5 left-0 h-px w-full bg-accent"
-                    />
-                  ) : null}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex items-center gap-2">
+    <>
+      <header className="sticky top-0 z-40 border-b border-line bg-bg/92 backdrop-blur-sm">
+        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-5 md:h-[72px] lg:px-10">
           <Link
-            href="/#stay-updated"
-            className="hidden h-10 items-center rounded-sm bg-brand px-4 text-sm font-medium text-brand-contrast transition-colors hover:bg-brand-strong active:translate-y-px sm:inline-flex"
+            href="/"
+            className="flex items-center gap-2.5 rounded-sm"
+            aria-label="USAGWP home"
           >
-            Stay Updated
+            <BrandMark className="h-7 w-7 text-brand" />
+            <span className="font-display text-lg font-semibold tracking-[0.16em] text-fg">
+              USAGWP
+            </span>
           </Link>
 
-          <button
-            ref={triggerRef}
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-expanded={open}
-            aria-controls={panelId}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-line-strong text-fg lg:hidden"
-          >
-            <List size={20} weight="regular" aria-hidden />
-            <span className="sr-only">Open menu</span>
-          </button>
-        </div>
-      </div>
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center gap-7">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={cn(
+                      "relative py-1 text-sm transition-colors",
+                      isActive(item.href)
+                        ? "text-fg"
+                        : "text-fg-muted hover:text-fg",
+                    )}
+                  >
+                    {item.label}
+                    {isActive(item.href) ? (
+                      <span
+                        aria-hidden
+                        className="absolute -bottom-0.5 left-0 h-px w-full bg-accent"
+                      />
+                    ) : null}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
+          <div className="flex items-center gap-2">
+            <Link
+              href="/#stay-updated"
+              className="hidden h-10 items-center rounded-sm bg-brand px-4 text-sm font-medium text-brand-contrast transition-colors hover:bg-brand-strong active:translate-y-px sm:inline-flex"
+            >
+              Stay Updated
+            </Link>
+
+            <button
+              ref={triggerRef}
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-expanded={open}
+              aria-controls={panelId}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-line-strong text-fg lg:hidden"
+            >
+              <List size={20} weight="regular" aria-hidden />
+              <span className="sr-only">Open menu</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/*
+        The drawer is rendered OUTSIDE <header> on purpose. The header carries
+        backdrop-blur, and a backdrop-filter establishes a containing block for
+        fixed-position descendants: nested here, `inset-0` would resolve to the
+        64px header box rather than the viewport, and the nav links would be
+        clipped out of sight.
+      */}
       {open ? (
         <div className="fixed inset-0 z-50 lg:hidden">
           <button
@@ -178,6 +187,6 @@ export function SiteHeader() {
           </div>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }

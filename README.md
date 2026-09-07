@@ -280,14 +280,33 @@ upgrade, at which point the workaround can be removed from this document.
   button can never end up light-on-light.
 - All motion is gated behind `prefers-reduced-motion` and degrades to the finished state.
 
-### On progressive enhancement
+### On the entrance animation
 
-The entrance animation is arranged so that **nothing is hidden until JavaScript confirms it is
-running** (`RevealController` sets `data-reveal="on"`, and only then does the hidden-then-settle
-rule apply). The obvious implementation, starting at `opacity: 0` and revealing on scroll,
-leaves the entire page blank whenever the script fails and ships hidden text to any crawler
-that does not execute JavaScript. There is also a four-second failsafe: the page being readable
-always wins over the animation playing.
+`RevealController` is written so that content can never go missing, because the obvious
+implementation fails in three separate ways that all blank real text. Each rule below exists
+because the naive version was tried and broke:
+
+1. **Nothing is hidden by the stylesheet alone.** The hidden state (`.is-pending`) is only ever
+   added by JavaScript. If the script fails, is blocked, or never runs, the page renders
+   complete. Server HTML contains no hidden state, so crawlers see the full text.
+2. **Only the IntersectionObserver hides anything, and only once it has confirmed the element is
+   off screen.** Hiding everything up front and revealing what is in view does not work: the
+   first observer callback is asynchronous, so the browser paints the blanked page first and the
+   reader watches the text vanish and come back.
+3. **It re-arms on every route change.** The controller lives in the shared site layout, which
+   is *not* remounted when the router moves between pages. Keyed only to mount, every page
+   visited after the first stayed blank until a full reload.
+
+A periodic failsafe rescues anything still hidden that is actually on screen, and leaves
+everything else observed so content further down the page keeps its animation.
+
+### On fixed-position elements
+
+The mobile drawer is rendered as a **sibling** of `<header>`, not inside it. The header uses
+`backdrop-blur`, and a `backdrop-filter` establishes a containing block for fixed-position
+descendants: nested inside, the drawer's `inset-0` resolved to the 64px header box instead of
+the viewport, and every nav link was clipped out of sight. Anything `position: fixed` added
+later must not sit inside a filtered, transformed, or `will-change`-promoted ancestor.
 
 ---
 
