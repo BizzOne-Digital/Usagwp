@@ -123,6 +123,27 @@ export function SettingsForm({
         </div>
       </Panel>
 
+      <Panel
+        title="Family tree"
+        description="One image shown at the top of the public Family Tree page. Leave it empty and the page shows the entries only."
+      >
+        <div className="grid gap-5 md:grid-cols-2">
+          <ImageField
+            name="familyTreeImage"
+            label="Family tree image"
+            folder="pages"
+            defaultValue={settings.familyTreeImage}
+            hint="JPEG, PNG or WebP, up to 8MB. A wide image reads best."
+          />
+          <TextField
+            name="familyTreeImageAlt"
+            label="Image description"
+            defaultValue={settings.familyTreeImageAlt}
+            hint="Describes the image for screen readers and search engines."
+          />
+        </div>
+      </Panel>
+
       <Panel title="Footer and analytics">
         <div className="grid gap-5">
           <TextAreaField

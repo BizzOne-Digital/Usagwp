@@ -7,6 +7,7 @@ import { getPostBySlug, getPublishedPosts } from "@/lib/content";
 import { formatLongDate, toParagraphs } from "@/lib/format";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { resolveImageUrl } from "@/lib/uploads/resolve-image-url";
+import { buttonClasses } from "@/lib/button-classes";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -25,20 +26,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return buildMetadata({
       title: "Entry not found",
       description: "",
-      path: `/journal/${slug}`,
+      path: `/ebook-order/${slug}`,
       noIndex: true,
     });
   }
   return buildMetadata({
     title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
-    path: `/journal/${post.slug}`,
+    path: `/ebook-order/${post.slug}`,
     image: post.ogImage || post.coverImage || null,
     type: "article",
   });
 }
 
-export default async function JournalEntryPage({ params }: Props) {
+export default async function OrderEditionPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -52,7 +53,7 @@ export default async function JournalEntryPage({ params }: Props) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    url: absoluteUrl(`/journal/${post.slug}`),
+    url: absoluteUrl(`/ebook-order/${post.slug}`),
     ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
     ...(post.coverImage ? { image: [absoluteUrl(post.coverImage)] } : {}),
     ...(post.author ? { author: { "@type": "Person", name: post.author } } : {}),
@@ -70,18 +71,18 @@ export default async function JournalEntryPage({ params }: Props) {
         <header className="border-b border-line">
           <div className="mx-auto max-w-[46rem] px-5 pb-12 pt-14 md:pt-20 lg:px-0">
             <Link
-              href="/journal"
+              href="/ebook-order"
               className="text-sm text-fg-muted underline-offset-4 hover:text-fg hover:underline"
             >
-              Back to the journal
+              Back to eBook/Paperback Order
             </Link>
             <h1 className="mt-6 font-display text-[clamp(2.1rem,5vw,3.5rem)] font-medium leading-[1.06] tracking-[-0.02em] text-balance">
               {post.title}
             </h1>
             <p className="mt-5 text-sm text-fg-muted">
-              {post.author ? `By ${post.author}` : null}
+              {post.author || null}
               {post.author && post.publishedAt ? ". " : null}
-              {post.publishedAt ? formatLongDate(post.publishedAt) : null}
+              {post.publishedAt ? `Available ${formatLongDate(post.publishedAt)}` : null}
             </p>
           </div>
         </header>
@@ -105,6 +106,19 @@ export default async function JournalEntryPage({ params }: Props) {
               <p key={index}>{paragraph}</p>
             ))}
           </div>
+
+          {post.orderUrl ? (
+            <div className="mt-10">
+              <a
+                href={post.orderUrl}
+                rel="noopener noreferrer"
+                target="_blank"
+                className={buttonClasses("primary", "lg")}
+              >
+                {post.orderLabel || "Order this edition"}
+              </a>
+            </div>
+          ) : null}
         </div>
       </article>
     </>

@@ -12,8 +12,8 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/book", label: "The Book" },
   { href: "/about", label: "About" },
-  { href: "/team", label: "Our Team" },
-  { href: "/services", label: "Services" },
+  { href: "/family-tree", label: "Family Tree" },
+  { href: "/author-notes", label: "Author Notes" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

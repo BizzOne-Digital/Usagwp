@@ -11,29 +11,29 @@ import { resolveImageUrl } from "@/lib/uploads/resolve-image-url";
 import { buttonClasses } from "@/lib/button-classes";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata("journal", "/journal", {
-    title: "Journal",
+  return generatePageMetadata("journal", "/ebook-order", {
+    title: "eBook/Paperback Order",
     description:
-      "Notes on the research, the archive and the making of One Thread in the Fabric of Freedom.",
+      "Order One Thread in the Fabric of Freedom by Peter Douet as an eBook or a paperback.",
   });
 }
 
-export default async function JournalPage() {
+export default async function EbookOrderPage() {
   const posts = await getPublishedPosts();
 
   return (
     <>
       <PageHeader
-        title="Journal"
-        intro="Notes from the research and the road to publication."
+        title="eBook/Paperback Order"
+        intro="Order One Thread in the Fabric of Freedom. Every edition available is listed below, with what it includes and where to buy it."
       />
 
       <section className="bg-bg py-16 md:py-20">
         <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
           {posts.length === 0 ? (
             <EmptyState
-              title="Nothing has been published here yet"
-              body="Research notes and updates will appear here. Join the list and we will tell you when the book is available."
+              title="Ordering is not open yet"
+              body="The book cannot be ordered yet. Join the list and we will tell you the moment it can be."
               action={
                 <Link
                   href="/#stay-updated"
@@ -53,12 +53,12 @@ export default async function JournalPage() {
                       <div>
                         {post.publishedAt ? (
                           <p className="text-sm text-fg-muted">
-                            {formatShortDate(post.publishedAt)}
+                            Available {formatShortDate(post.publishedAt)}
                           </p>
                         ) : null}
                         <h2 className="mt-2 font-display text-[1.75rem] leading-tight">
                           <Link
-                            href={`/journal/${post.slug}`}
+                            href={`/ebook-order/${post.slug}`}
                             className="transition-colors hover:text-accent"
                           >
                             {post.title}
@@ -69,6 +69,24 @@ export default async function JournalPage() {
                             {post.excerpt}
                           </p>
                         ) : null}
+                        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                          {post.orderUrl ? (
+                            <a
+                              href={post.orderUrl}
+                              rel="noopener noreferrer"
+                              target="_blank"
+                              className={buttonClasses("primary", "md")}
+                            >
+                              {post.orderLabel || "Order this edition"}
+                            </a>
+                          ) : null}
+                          <Link
+                            href={`/ebook-order/${post.slug}`}
+                            className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+                          >
+                            Full details
+                          </Link>
+                        </div>
                       </div>
                       {cover ? (
                         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm sm:order-last">

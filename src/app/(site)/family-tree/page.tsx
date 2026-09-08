@@ -4,35 +4,60 @@ import type { Metadata } from "next";
 
 import { EmptyState, PageHeader } from "@/components/marketing/page-header";
 import { Reveal } from "@/components/marketing/reveal";
-import { getPublishedTeam } from "@/lib/content";
+import { getPublishedTeam, getSiteSettings } from "@/lib/content";
 import { generatePageMetadata } from "@/lib/seo";
 import { resolveImageUrl } from "@/lib/uploads/resolve-image-url";
 import { buttonClasses } from "@/lib/button-classes";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata("team", "/team", {
-    title: "Our team",
+  return generatePageMetadata("team", "/family-tree", {
+    title: "Family Tree",
     description:
-      "The people behind USAGWP and the publication of One Thread in the Fabric of Freedom.",
+      "The line of descent from Reverend Edmond Kelly, born into slavery in Columbia, Tennessee, in 1817, to the family today.",
   });
 }
 
-export default async function TeamPage() {
-  const team = await getPublishedTeam();
+export default async function FamilyTreePage() {
+  const [team, settings] = await Promise.all([getPublishedTeam(), getSiteSettings()]);
+  const familyTree = resolveImageUrl(settings.familyTreeImage);
 
   return (
     <>
       <PageHeader
-        title="The people behind the work"
-        intro="Research, writing and publication are the work of a small group. Everyone listed here is part of bringing the record into print."
+        title="Family Tree"
+        intro="The line of descent from Reverend Edmond Kelly to the family today. The chart shows the tree as it has been traced so far, and every person on record is listed beneath it."
       />
+
+      {familyTree ? (
+        <section className="bg-bg pt-14 md:pt-16">
+          <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+            <Reveal>
+              <figure className="mx-auto max-w-[64rem]">
+                <Image
+                  src={familyTree}
+                  alt={settings.familyTreeImageAlt || "Family tree of Reverend Edmond Kelly"}
+                  width={1600}
+                  height={1000}
+                  sizes="(max-width: 1024px) 100vw, 64rem"
+                  className="h-auto w-full rounded-sm border border-line bg-bg-deep object-contain"
+                />
+                {settings.familyTreeImageAlt ? (
+                  <figcaption className="mt-3 text-sm text-fg-muted">
+                    {settings.familyTreeImageAlt}
+                  </figcaption>
+                ) : null}
+              </figure>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       <section className="bg-bg py-16 md:py-20">
         <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
           {team.length === 0 ? (
             <EmptyState
-              title="Team profiles are being prepared"
-              body="Profiles will appear here as they are added. In the meantime, Peter Douet can be reached directly."
+              title="Family tree entries are being prepared"
+              body="Individual records are added here as each one is verified against the archive. In the meantime, Peter Douet can be reached directly."
               action={
                 <Link
                   href="/contact"

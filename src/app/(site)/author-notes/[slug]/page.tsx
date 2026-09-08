@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return buildMetadata({
       title: "Service not found",
       description: "",
-      path: `/services/${slug}`,
+      path: `/author-notes/${slug}`,
       noIndex: true,
     });
   }
@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildMetadata({
     title: service.seoTitle || service.title,
     description: service.seoDescription || service.shortDescription,
-    path: `/services/${service.slug}`,
+    path: `/author-notes/${service.slug}`,
     image: service.image || null,
   });
 }
 
-export default async function ServiceDetailPage({ params }: Props) {
+export default async function AuthorNoteDetailPage({ params }: Props) {
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
 
@@ -51,10 +51,10 @@ export default async function ServiceDetailPage({ params }: Props) {
     <>
       <PageHeader title={service.title} intro={service.shortDescription}>
         <Link
-          href="/services"
+          href="/author-notes"
           className="mt-8 inline-block text-sm text-fg-muted underline-offset-4 hover:text-fg hover:underline"
         >
-          Back to services
+          Back to Author Notes
         </Link>
       </PageHeader>
 

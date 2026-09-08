@@ -106,22 +106,22 @@ export default async function AdminDashboardPage() {
       href: "/admin/book",
     },
     {
-      label: "Services",
+      label: "Author Notes",
       value: String(data.servicesActive),
       detail: `${data.servicesTotal} total, ${data.servicesActive} shown publicly`,
-      href: "/admin/services",
+      href: "/admin/author-notes",
     },
     {
-      label: "Team members",
+      label: "Family tree entries",
       value: String(data.teamPublished),
       detail: `${data.teamTotal} total, ${data.teamPublished} published`,
-      href: "/admin/team",
+      href: "/admin/family-tree",
     },
     {
-      label: "Journal entries",
+      label: "eBook/Paperback Order entries",
       value: String(data.postsPublished),
       detail: `${data.postsTotal} total, ${data.postsPublished} published`,
-      href: "/admin/journal",
+      href: "/admin/ebook-order",
     },
     {
       label: "Media files",

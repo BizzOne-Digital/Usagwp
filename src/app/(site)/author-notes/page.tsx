@@ -10,29 +10,29 @@ import { resolveImageUrl } from "@/lib/uploads/resolve-image-url";
 import { buttonClasses } from "@/lib/button-classes";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata("services", "/services", {
-    title: "Services",
+  return generatePageMetadata("services", "/author-notes", {
+    title: "Author Notes",
     description:
-      "Talks, readings and historical research work offered by USAGWP around the story of Reverend Edmond Kelly.",
+      "Notes from Peter Douet on the research behind One Thread in the Fabric of Freedom: the records, the archives and the people traced along the way.",
   });
 }
 
-export default async function ServicesPage() {
+export default async function AuthorNotesPage() {
   const services = await getActiveServices();
 
   return (
     <>
       <PageHeader
-        title="Working with us"
-        intro="Anything listed here is something we actively offer. If nothing is listed, nothing is currently being offered, and the contact page is the right place to start."
+        title="Author Notes"
+        intro="Notes from the author on the research behind the book. What the records showed, what they did not, and what each discovery changed."
       />
 
       <section className="bg-bg py-16 md:py-20">
         <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
           {services.length === 0 ? (
             <EmptyState
-              title="No services are listed at the moment"
-              body="Talks, readings and research enquiries are still welcome. Write to us and we will tell you what is possible."
+              title="No author notes have been published yet"
+              body="Notes will appear here as they are written. If you have a question about the research in the meantime, write to us."
               action={
                 <Link
                   href="/contact"
@@ -62,7 +62,7 @@ export default async function ServicesPage() {
                       ) : null}
                       <h2 className="font-display text-[1.75rem] leading-tight">
                         <Link
-                          href={`/services/${service.slug}`}
+                          href={`/author-notes/${service.slug}`}
                           className="transition-colors hover:text-accent"
                         >
                           {service.title}
@@ -74,10 +74,10 @@ export default async function ServicesPage() {
                         </p>
                       ) : null}
                       <Link
-                        href={`/services/${service.slug}`}
+                        href={`/author-notes/${service.slug}`}
                         className="mt-4 inline-block text-sm font-medium text-accent underline-offset-4 hover:underline"
                       >
-                        Read more about {service.title}
+                        Read this note
                       </Link>
                     </article>
                   </Reveal>

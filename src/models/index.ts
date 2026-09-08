@@ -176,6 +176,9 @@ const BlogPostSchema = new Schema(
     body: { type: String, default: "" },
     coverImage: { type: String, default: "" },
     author: { type: String, default: "" },
+    // Where this edition can actually be bought.
+    orderLabel: { type: String, default: "" },
+    orderUrl: { type: String, default: "" },
     status: { type: String, enum: ["draft", "published"], default: "draft", index: true },
     publishedAt: { type: Date, default: null },
     seoTitle: { type: String, default: "" },
@@ -205,6 +208,9 @@ const SiteSettingsSchema = new Schema(
     defaultSeoDescription: { type: String, default: "" },
     defaultOgImage: { type: String, default: "" },
     footerText: { type: String, default: "" },
+    // Single image shown at the top of the public Family Tree page.
+    familyTreeImage: { type: String, default: "" },
+    familyTreeImageAlt: { type: String, default: "" },
     analyticsId: { type: String, default: "" },
   },
   { timestamps: true },

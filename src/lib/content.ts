@@ -165,6 +165,8 @@ export type SiteSettingsView = {
   defaultSeoDescription: string;
   defaultOgImage: string;
   footerText: string;
+  familyTreeImage: string;
+  familyTreeImageAlt: string;
 };
 
 export const SITE_SETTINGS_FALLBACK: SiteSettingsView = {
@@ -180,6 +182,8 @@ export const SITE_SETTINGS_FALLBACK: SiteSettingsView = {
   defaultSeoDescription: "",
   defaultOgImage: "",
   footerText: "",
+  familyTreeImage: "",
+  familyTreeImageAlt: "",
 };
 
 export async function getSiteSettings(): Promise<SiteSettingsView> {
@@ -202,6 +206,8 @@ export async function getSiteSettings(): Promise<SiteSettingsView> {
         defaultSeoDescription: doc.defaultSeoDescription ?? "",
         defaultOgImage: doc.defaultOgImage ?? "",
         footerText: doc.footerText ?? "",
+        familyTreeImage: doc.familyTreeImage ?? "",
+        familyTreeImageAlt: doc.familyTreeImageAlt ?? "",
       } satisfies SiteSettingsView;
     },
     SITE_SETTINGS_FALLBACK,
@@ -347,6 +353,8 @@ export type BlogPostView = {
   body: string;
   coverImage: string;
   author: string;
+  orderLabel: string;
+  orderUrl: string;
   publishedAt: string | null;
   seoTitle: string;
   seoDescription: string;
@@ -368,6 +376,8 @@ export async function getPublishedPosts(limit?: number): Promise<BlogPostView[]>
         body: doc.body ?? "",
         coverImage: doc.coverImage ?? "",
         author: doc.author ?? "",
+        orderLabel: doc.orderLabel ?? "",
+        orderUrl: doc.orderUrl ?? "",
         publishedAt: doc.publishedAt ? doc.publishedAt.toISOString() : null,
         seoTitle: doc.seoTitle ?? "",
         seoDescription: doc.seoDescription ?? "",
@@ -392,6 +402,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPostView | null> 
         body: doc.body ?? "",
         coverImage: doc.coverImage ?? "",
         author: doc.author ?? "",
+        orderLabel: doc.orderLabel ?? "",
+        orderUrl: doc.orderUrl ?? "",
         publishedAt: doc.publishedAt ? doc.publishedAt.toISOString() : null,
         seoTitle: doc.seoTitle ?? "",
         seoDescription: doc.seoDescription ?? "",

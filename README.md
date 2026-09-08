@@ -199,9 +199,9 @@ advance and reveal them by flipping the status.
 | Collection      | Public surface                          |
 | --------------- | --------------------------------------- |
 | `Book`          | Home page, `/book`                      |
-| `Service`       | `/services`, `/services/[slug]`         |
-| `TeamMember`    | `/team`                                 |
-| `BlogPost`      | `/journal`, `/journal/[slug]`           |
+| `Service`       | `/author-notes`, `/author-notes/[slug]` |
+| `TeamMember`    | `/family-tree`                          |
+| `BlogPost`      | `/ebook-order`, `/ebook-order/[slug]`   |
 | `Faq`           | `/faq`                                  |
 | `Testimonial`   | Available to the site, not yet placed   |
 | `Page`          | Per-page SEO overrides                  |
@@ -215,8 +215,24 @@ Repeatable types are driven by one declarative registry in `src/lib/admin/collec
 which generates the list view, the editor, validation and the save, publish and delete actions.
 Adding a content type is a config entry, not another set of pages.
 
-**Nothing is invented.** Team members, services, questions and journal entries appear only when
-the client adds them. Until then each page shows a composed empty state rather than filler.
+**Nothing is invented.** Family tree entries, author notes, questions and order editions appear
+only when the client adds them. Until then each page shows a composed empty state rather than
+filler.
+
+### Section names and routes
+
+Three sections were renamed after the first draft. The model names, database collections and
+per-page SEO keys were deliberately left alone so no stored content or SEO override is
+orphaned; only routes and labels changed. Old URLs are 301-redirected in `next.config.ts`.
+
+| Model        | Was       | Now                     | Public route    | Admin route            |
+| ------------ | --------- | ----------------------- | --------------- | ---------------------- |
+| `Service`    | Services  | Author Notes            | `/author-notes` | `/admin/author-notes`  |
+| `TeamMember` | Our Team  | Family Tree             | `/family-tree`  | `/admin/family-tree`   |
+| `BlogPost`   | Journal   | eBook/Paperback Order   | `/ebook-order`  | `/admin/ebook-order`   |
+
+The Family Tree page also shows one family tree image, uploaded in Site settings
+(`familyTreeImage`, `familyTreeImageAlt`).
 
 ### Draft handling
 
@@ -245,12 +261,13 @@ Structured data:
 - `/book` emits `Product` with a real offer only when the book is genuinely for sale, and
   `Book` otherwise.
 - `/faq` emits `FAQPage` only when there are published questions.
-- Journal entries emit `Article`.
+- Order editions still emit `Article`, inherited from the Journal section they were renamed
+  from. If prices move onto these entries, switch them to `Product` with an `Offer`.
 
 `robots.ts` allows the public site and blocks `/admin`, the mutating API routes, and the future
 account, cart and checkout routes. `/api/uploads` stays crawlable so cover art and social
-images can be fetched. `sitemap.ts` lists public routes plus published services and journal
-entries, and excludes drafts, admin and API routes.
+images can be fetched. `sitemap.ts` lists public routes plus published author notes and order
+editions, and excludes drafts, admin and API routes.
 
 Per-page overrides for title, description, sharing image, canonical and indexing live in
 **Admin → Pages and SEO**. Empty fields fall back to the page's own well-written default.

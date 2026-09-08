@@ -33,9 +33,9 @@ const SECTIONS = [
     items: [
       { href: "/admin/book", label: "The Book", icon: BookOpen },
       { href: "/admin/pages", label: "Pages and SEO", icon: FileText },
-      { href: "/admin/services", label: "Services", icon: Wrench },
-      { href: "/admin/team", label: "Team", icon: Users },
-      { href: "/admin/journal", label: "Journal", icon: FileText },
+      { href: "/admin/author-notes", label: "Author Notes", icon: Wrench },
+      { href: "/admin/family-tree", label: "Family Tree", icon: Users },
+      { href: "/admin/ebook-order", label: "eBook/Paperback Order", icon: FileText },
       { href: "/admin/faqs", label: "Questions", icon: Question },
       { href: "/admin/testimonials", label: "Testimonials", icon: ChatCircleText },
     ],

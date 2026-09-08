@@ -30,6 +30,8 @@ export async function saveSettingsAction(
     defaultSeoDescription: readString(form, "defaultSeoDescription"),
     defaultOgImage: readString(form, "defaultOgImage"),
     footerText: readString(form, "footerText"),
+    familyTreeImage: readString(form, "familyTreeImage"),
+    familyTreeImageAlt: readString(form, "familyTreeImageAlt"),
     analyticsId: readString(form, "analyticsId"),
   });
 
@@ -38,7 +40,7 @@ export async function saveSettingsAction(
 
   const result = await withAdmin(async () => {
     const existing = await SiteSettings.findOne({ key: "site" })
-      .select("logo favicon defaultOgImage")
+      .select("logo favicon defaultOgImage familyTreeImage")
       .lean();
 
     await SiteSettings.updateOne({ key: "site" }, { $set: { key: "site", ...input } }, { upsert: true });
@@ -46,6 +48,7 @@ export async function saveSettingsAction(
     await deleteReplacedUpload(existing?.logo, input.logo);
     await deleteReplacedUpload(existing?.favicon, input.favicon);
     await deleteReplacedUpload(existing?.defaultOgImage, input.defaultOgImage);
+    await deleteReplacedUpload(existing?.familyTreeImage, input.familyTreeImage);
   });
 
   if (!result.ok) return result.state;
@@ -53,9 +56,9 @@ export async function saveSettingsAction(
   // Settings appear in the header and footer of every page.
   revalidatePublic([
     "/about",
-    "/team",
-    "/services",
-    "/journal",
+    "/family-tree",
+    "/author-notes",
+    "/ebook-order",
     "/faq",
     "/contact",
     "/privacy",

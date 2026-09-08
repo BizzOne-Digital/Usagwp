@@ -134,6 +134,8 @@ export const blogPostSchema = z.object({
   body: optionalText(40000),
   coverImage: imageRefSchema,
   author: optionalText(160),
+  orderLabel: optionalText(80),
+  orderUrl: optionalUrlSchema,
   status: z.enum(["draft", "published"]),
   publishedAt: z.union([z.literal(""), z.iso.date()]).optional().default(""),
   seoTitle: optionalText(160),
@@ -165,6 +167,8 @@ export const siteSettingsSchema = z.object({
   defaultSeoDescription: optionalText(320),
   defaultOgImage: imageRefSchema,
   footerText: optionalText(600),
+  familyTreeImage: imageRefSchema,
+  familyTreeImageAlt: optionalText(200),
   analyticsId: optionalText(60),
 });
 

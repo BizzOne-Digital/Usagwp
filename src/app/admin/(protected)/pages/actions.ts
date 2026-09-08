@@ -24,13 +24,18 @@ const pageSeoSchema = z.object({
   noIndex: z.boolean(),
 });
 
+/**
+ * The keys are the stored `Page.key` values and stay as they were when the
+ * sections were named Services, Team and Journal, so existing SEO overrides are
+ * not orphaned. Only the public paths they map to were renamed.
+ */
 const PATHS: Record<string, string> = {
   home: "/",
   book: "/book",
   about: "/about",
-  team: "/team",
-  services: "/services",
-  journal: "/journal",
+  team: "/family-tree",
+  services: "/author-notes",
+  journal: "/ebook-order",
   faq: "/faq",
   contact: "/contact",
   privacy: "/privacy",
