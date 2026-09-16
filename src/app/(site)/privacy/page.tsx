@@ -7,7 +7,7 @@ import { generatePageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata("privacy", "/privacy", {
     title: "Privacy Policy",
-    description: "How USAGWP handles the information you give us through this website.",
+    description: "How Edmond Kelly handles the information you give us through this website.",
   });
 }
 

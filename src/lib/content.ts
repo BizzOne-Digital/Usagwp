@@ -170,10 +170,10 @@ export type SiteSettingsView = {
 };
 
 export const SITE_SETTINGS_FALLBACK: SiteSettingsView = {
-  siteName: "USAGWP",
+  siteName: "Edmond Kelly",
   tagline: "One Thread in the Fabric of Freedom",
   siteDescription:
-    "USAGWP preserves and shares the true story of Reverend Edmond Kelly, told by his descendant Peter Douet in the forthcoming book One Thread in the Fabric of Freedom.",
+    "Edmond Kelly preserves and shares the true story of Reverend Edmond Kelly, told by his descendant Peter Douet in the forthcoming book One Thread in the Fabric of Freedom.",
   logo: "",
   email: "support@usagwp.com",
   phone: "9165009232",
@@ -193,9 +193,15 @@ export async function getSiteSettings(): Promise<SiteSettingsView> {
       const doc = await SiteSettings.findOne({ key: "site" }).lean();
       if (!doc) return SITE_SETTINGS_FALLBACK;
       return {
-        siteName: doc.siteName || SITE_SETTINGS_FALLBACK.siteName,
+        siteName:
+          !doc.siteName || doc.siteName === "USAGWP"
+            ? SITE_SETTINGS_FALLBACK.siteName
+            : doc.siteName,
         tagline: doc.tagline || SITE_SETTINGS_FALLBACK.tagline,
-        siteDescription: doc.siteDescription || SITE_SETTINGS_FALLBACK.siteDescription,
+        siteDescription:
+          !doc.siteDescription || doc.siteDescription.includes("USAGWP")
+            ? SITE_SETTINGS_FALLBACK.siteDescription
+            : doc.siteDescription,
         logo: doc.logo ?? "",
         email: doc.email || SITE_SETTINGS_FALLBACK.email,
         phone: doc.phone || SITE_SETTINGS_FALLBACK.phone,

@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata("about", "/about", {
     title: "About the project",
     description:
-      "USAGWP exists to preserve the record of Reverend Edmond Kelly, born into slavery in Columbia, Tennessee, in 1817, and to bring his story to readers through the work of his descendant Peter Douet.",
+      "Edmond Kelly exists to preserve the record of Reverend Edmond Kelly, born into slavery in Columbia, Tennessee, in 1817, and to bring his story to readers through the work of his descendant Peter Douet.",
   });
 }
 
@@ -21,7 +21,7 @@ export default async function AboutPage() {
     <>
       <PageHeader
         title="Keeping the record of one life"
-        intro="USAGWP exists for a single purpose: to preserve the story of Reverend Edmond Kelly and to put it in front of readers who have never heard it."
+        intro="Edmond Kelly exists for a single purpose: to preserve the story of Reverend Edmond Kelly and to put it in front of readers who have never heard it."
       />
 
       <section className="border-b border-line bg-bg py-16 md:py-24">

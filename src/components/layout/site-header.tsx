@@ -61,11 +61,11 @@ export function SiteHeader() {
           <Link
             href="/"
             className="flex items-center gap-2.5 rounded-sm"
-            aria-label="USAGWP home"
+            aria-label="Edmond Kelly home"
           >
             <BrandMark className="h-7 w-7 text-brand" />
             <span className="font-display text-lg font-semibold tracking-[0.16em] text-fg">
-              USAGWP
+              Edmond Kelly
             </span>
           </Link>
 
@@ -144,7 +144,7 @@ export function SiteHeader() {
           >
             <div className="flex h-16 items-center justify-between border-b border-line px-5">
               <span className="font-display text-lg font-semibold tracking-[0.16em]">
-                USAGWP
+                Edmond Kelly
               </span>
               <button
                 ref={closeButtonRef}

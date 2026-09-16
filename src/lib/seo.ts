@@ -78,7 +78,7 @@ export function buildMetadata(input: BuildMetadataInput): Metadata {
       title,
       description,
       url: canonical,
-      siteName: "USAGWP",
+      siteName: "Edmond Kelly",
       locale,
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },

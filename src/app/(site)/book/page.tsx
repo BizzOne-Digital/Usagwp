@@ -40,7 +40,7 @@ export default async function BookPage() {
         url: absoluteUrl("/book"),
         ...(book.coverImage ? { image: [absoluteUrl(book.coverImage)] } : {}),
         ...(book.isbn ? { gtin13: book.isbn } : {}),
-        brand: { "@type": "Organization", name: "USAGWP" },
+        brand: { "@type": "Organization", name: "Edmond Kelly" },
         offers: {
           "@type": "Offer",
           url: book.purchaseUrl || absoluteUrl("/book"),

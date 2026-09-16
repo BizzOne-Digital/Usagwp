@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata("contact", "/contact", {
     title: "Contact",
     description:
-      "Reach Peter Douet and the USAGWP team about the book, talks, readings, research and press enquiries.",
+      "Reach Peter Douet and the Edmond Kelly team about the book, talks, readings, research and press enquiries.",
   });
 }
 

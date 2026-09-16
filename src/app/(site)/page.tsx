@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata("home", "/", {
     title: "One Thread in the Fabric of Freedom",
     description:
-      "USAGWP preserves and shares the true story of Reverend Edmond Kelly, born into slavery in 1817, who preached across America, England and Ireland to buy his family out of bondage. A forthcoming book by Peter Douet.",
+      "Edmond Kelly preserves and shares the true story of Reverend Edmond Kelly, born into slavery in 1817, who preached across America, England and Ireland to buy his family out of bondage. A forthcoming book by Peter Douet.",
   });
 }
 

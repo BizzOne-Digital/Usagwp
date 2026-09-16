@@ -10,7 +10,7 @@
  */
 export function BrandMark({
   className,
-  title = "USAGWP",
+  title = "Edmond Kelly",
 }: {
   className?: string;
   title?: string;

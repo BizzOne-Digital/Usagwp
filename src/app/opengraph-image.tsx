@@ -38,7 +38,7 @@ export default async function OpenGraphImage() {
           }}
         />
         <div style={{ display: "flex", fontSize: 24, letterSpacing: 6, color: "#a7b0c1" }}>
-          USAGWP
+          Edmond Kelly
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div

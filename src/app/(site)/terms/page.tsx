@@ -7,7 +7,7 @@ import { generatePageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata("terms", "/terms", {
     title: "Terms",
-    description: "The terms that apply to your use of the USAGWP website.",
+    description: "The terms that apply to your use of the Edmond Kelly website.",
   });
 }
 

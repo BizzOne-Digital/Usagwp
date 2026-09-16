@@ -196,7 +196,7 @@ const SiteSettingsSchema = new Schema(
   {
     // Single-document collection, pinned by this key.
     key: { type: String, default: "site", unique: true },
-    siteName: { type: String, default: "USAGWP" },
+    siteName: { type: String, default: "Edmond Kelly" },
     tagline: { type: String, default: "" },
     siteDescription: { type: String, default: "" },
     logo: { type: String, default: "" },

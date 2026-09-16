@@ -29,12 +29,12 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "One Thread in the Fabric of Freedom | USAGWP",
-    template: "%s | USAGWP",
+    default: "One Thread in the Fabric of Freedom | Edmond Kelly",
+    template: "%s | Edmond Kelly",
   },
   description:
     "The true story of Reverend Edmond Kelly, born into slavery in 1817, who preached across America, England and Ireland to buy his family out of bondage. A forthcoming book by Peter Douet.",
-  applicationName: "USAGWP",
+  applicationName: "Edmond Kelly",
   authors: [{ name: "Peter Douet" }],
   keywords: [
     "Edmond Kelly",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
   openGraph: {
     type: "website",
-    siteName: "USAGWP",
+    siteName: "Edmond Kelly",
     locale: "en_US",
     url: `${siteUrl}/`,
   },

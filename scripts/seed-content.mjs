@@ -63,10 +63,10 @@ const BOOK = {
 
 const SETTINGS = {
   key: "site",
-  siteName: "USAGWP",
+  siteName: "Edmond Kelly",
   tagline: "One Thread in the Fabric of Freedom",
   siteDescription:
-    "USAGWP preserves and shares the true story of Reverend Edmond Kelly, told by his descendant Peter Douet in the forthcoming book One Thread in the Fabric of Freedom.",
+    "Edmond Kelly preserves and shares the true story of Reverend Edmond Kelly, told by his descendant Peter Douet in the forthcoming book One Thread in the Fabric of Freedom.",
   email: "support@usagwp.com",
   phone: "9165009232",
   socialLinks: [],
