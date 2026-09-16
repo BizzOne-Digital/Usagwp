@@ -17,7 +17,7 @@ export default async function AdminLoginPage() {
         <div className="mb-8 flex items-center gap-2.5">
           <BrandMark className="h-7 w-7 text-brand" />
           <span className="font-display text-lg font-semibold tracking-[0.16em] text-fg">
-            USAGWP
+            Edmond Kelly
           </span>
         </div>
 
