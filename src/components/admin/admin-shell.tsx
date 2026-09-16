@@ -116,7 +116,7 @@ export function AdminShell({
         <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-line px-4">
           <BrandMark className="h-6 w-6 text-brand" />
           <span className="font-display text-base font-semibold tracking-[0.14em]">
-            USAGWP
+            Edmond Kelly
           </span>
         </div>
         {nav}
@@ -148,7 +148,7 @@ export function AdminShell({
           >
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-line px-4">
               <span className="font-display text-base font-semibold tracking-[0.14em]">
-                USAGWP
+                Edmond Kelly
               </span>
               <button
                 type="button"
