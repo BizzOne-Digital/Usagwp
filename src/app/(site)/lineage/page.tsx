@@ -74,24 +74,27 @@ export default async function LineagePage() {
               {team.map((member, index) => {
                 const photo = resolveImageUrl(member.photo);
                 return (
-                  <Reveal
-                    as="li"
-                    key={member.id}
-                    delay={Math.min(index, 4) * 0.05}
-                    className="flex w-full flex-col items-center"
-                  >
+                  <li key={member.id} className="flex w-full flex-col items-center">
+                    {/* Arrow and entry reveal separately: one Reveal around the
+                        whole <li> fires while the previous entry is still on
+                        screen, so the animation is over before this one is. */}
                     {index > 0 ? (
-                      <Image
-                        src="/brand/arr.png"
-                        alt=""
-                        aria-hidden
-                        width={381}
-                        height={524}
-                        className="my-8 h-14 w-auto opacity-70"
-                      />
+                      <Reveal>
+                        <Image
+                          src="/brand/arr.png"
+                          alt=""
+                          aria-hidden
+                          width={381}
+                          height={524}
+                          className="my-8 h-14 w-auto opacity-70"
+                        />
+                      </Reveal>
                     ) : null}
 
-                    <article className="flex flex-col items-center text-center">
+                    <Reveal
+                      delay={index > 0 ? 0.12 : 0}
+                      className="flex w-full flex-col items-center text-center"
+                    >
                       {/* object-contain, not cover: these are archive photographs
                           and a crop cuts people out of the frame. */}
                       <div className="flex h-60 w-full max-w-[26rem] items-center justify-center overflow-hidden rounded-sm bg-bg-deep md:h-72">
@@ -143,8 +146,8 @@ export default async function LineagePage() {
                           ))}
                         </ul>
                       ) : null}
-                    </article>
-                  </Reveal>
+                    </Reveal>
+                  </li>
                 );
               })}
             </ol>
