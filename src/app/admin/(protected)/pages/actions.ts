@@ -33,7 +33,7 @@ const PATHS: Record<string, string> = {
   home: "/",
   book: "/book",
   about: "/about",
-  team: "/family-tree",
+  team: "/lineage",
   services: "/author-notes",
   journal: "/ebook-order",
   faq: "/faq",

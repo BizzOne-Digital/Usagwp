@@ -208,7 +208,8 @@ const SiteSettingsSchema = new Schema(
     defaultSeoDescription: { type: String, default: "" },
     defaultOgImage: { type: String, default: "" },
     footerText: { type: String, default: "" },
-    // Single image shown at the top of the public Family Tree page.
+    // Single image shown at the top of the public Lineage page. Field name kept
+    // from when the section was called Family Tree.
     familyTreeImage: { type: String, default: "" },
     familyTreeImageAlt: { type: String, default: "" },
     analyticsId: { type: String, default: "" },

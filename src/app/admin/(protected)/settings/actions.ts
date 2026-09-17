@@ -56,7 +56,7 @@ export async function saveSettingsAction(
   // Settings appear in the header and footer of every page.
   revalidatePublic([
     "/about",
-    "/family-tree",
+    "/lineage",
     "/author-notes",
     "/ebook-order",
     "/faq",

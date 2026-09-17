@@ -124,13 +124,13 @@ export function SettingsForm({
       </Panel>
 
       <Panel
-        title="Family tree"
-        description="One image shown at the top of the public Family Tree page. Leave it empty and the page shows the entries only."
+        title="Lineage"
+        description="One image shown at the top of the public Lineage page. Leave it empty and the page shows the entries only."
       >
         <div className="grid gap-5 md:grid-cols-2">
           <ImageField
             name="familyTreeImage"
-            label="Family tree image"
+            label="Lineage image"
             folder="pages"
             defaultValue={settings.familyTreeImage}
             hint="JPEG, PNG or WebP, up to 8MB. A wide image reads best."

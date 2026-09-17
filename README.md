@@ -200,7 +200,7 @@ advance and reveal them by flipping the status.
 | --------------- | --------------------------------------- |
 | `Book`          | Home page, `/book`                      |
 | `Service`       | `/author-notes`, `/author-notes/[slug]` |
-| `TeamMember`    | `/family-tree`                          |
+| `TeamMember`    | `/lineage`                              |
 | `BlogPost`      | `/ebook-order`, `/ebook-order/[slug]`   |
 | `Faq`           | `/faq`                                  |
 | `Testimonial`   | Available to the site, not yet placed   |
@@ -215,7 +215,7 @@ Repeatable types are driven by one declarative registry in `src/lib/admin/collec
 which generates the list view, the editor, validation and the save, publish and delete actions.
 Adding a content type is a config entry, not another set of pages.
 
-**Nothing is invented.** Family tree entries, author notes, questions and order editions appear
+**Nothing is invented.** Lineage entries, author notes, questions and order editions appear
 only when the client adds them. Until then each page shows a composed empty state rather than
 filler.
 
@@ -228,11 +228,11 @@ orphaned; only routes and labels changed. Old URLs are 301-redirected in `next.c
 | Model        | Was       | Now                     | Public route    | Admin route            |
 | ------------ | --------- | ----------------------- | --------------- | ---------------------- |
 | `Service`    | Services  | Author Notes            | `/author-notes` | `/admin/author-notes`  |
-| `TeamMember` | Our Team  | Family Tree             | `/family-tree`  | `/admin/family-tree`   |
+| `TeamMember` | Our Team  | Lineage                 | `/lineage`      | `/admin/lineage`       |
 | `BlogPost`   | Journal   | eBook/Paperback Order   | `/ebook-order`  | `/admin/ebook-order`   |
 
-The Family Tree page also shows one family tree image, uploaded in Site settings
-(`familyTreeImage`, `familyTreeImageAlt`).
+The Lineage page also shows one lineage image, uploaded in Site settings. The fields kept
+their original names (`familyTreeImage`, `familyTreeImageAlt`) so no stored value is orphaned.
 
 ### Draft handling
 

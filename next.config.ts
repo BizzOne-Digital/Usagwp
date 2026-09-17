@@ -15,16 +15,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     // The Services, Team and Journal sections were renamed to Author Notes,
-    // Family Tree and eBook/Paperback Order. These keep old links, bookmarks
+    // Lineage and eBook/Paperback Order. These keep old links, bookmarks
     // and indexed search results working.
     return [
       { source: "/services", destination: "/author-notes", permanent: true },
       { source: "/services/:slug", destination: "/author-notes/:slug", permanent: true },
-      { source: "/team", destination: "/family-tree", permanent: true },
+      { source: "/team", destination: "/lineage", permanent: true },
+      { source: "/family-tree", destination: "/lineage", permanent: true },
       { source: "/journal", destination: "/ebook-order", permanent: true },
       { source: "/journal/:slug", destination: "/ebook-order/:slug", permanent: true },
       { source: "/admin/services", destination: "/admin/author-notes", permanent: false },
-      { source: "/admin/team", destination: "/admin/family-tree", permanent: false },
+      { source: "/admin/team", destination: "/admin/lineage", permanent: false },
+      { source: "/admin/family-tree", destination: "/admin/lineage", permanent: false },
       { source: "/admin/journal", destination: "/admin/ebook-order", permanent: false },
     ];
   },

@@ -112,10 +112,10 @@ export default async function AdminDashboardPage() {
       href: "/admin/author-notes",
     },
     {
-      label: "Family tree entries",
+      label: "Lineage entries",
       value: String(data.teamPublished),
       detail: `${data.teamTotal} total, ${data.teamPublished} published`,
-      href: "/admin/family-tree",
+      href: "/admin/lineage",
     },
     {
       label: "eBook/Paperback Order entries",

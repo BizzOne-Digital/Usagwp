@@ -141,11 +141,11 @@ const COLLECTIONS: CollectionConfig[] = [
     ],
   },
   {
-    slug: "family-tree",
-    singular: "Family tree entry",
-    plural: "Family Tree",
+    slug: "lineage",
+    singular: "Lineage entry",
+    plural: "Lineage",
     description:
-      "One entry per person in the family line. Only published entries appear on the public Family Tree page. Nothing is invented: the page shows exactly what is entered here.",
+      "One entry per person in the line of descent, in order. Only published entries appear on the public Lineage page. Nothing is invented: the page shows exactly what is entered here.",
     model: TeamMember as unknown as Model<Record<string, unknown>>,
     schema: teamMemberSchema,
     listPrimary: "name",
@@ -153,7 +153,7 @@ const COLLECTIONS: CollectionConfig[] = [
     publishField: { name: "published", publishedValue: true, label: "Published" },
     sort: { sortOrder: 1, name: 1 },
     imageFields: ["photo"],
-    revalidate: ["/family-tree"],
+    revalidate: ["/lineage"],
     fields: [
       { name: "name", label: "Full name", type: "text", required: true },
       {

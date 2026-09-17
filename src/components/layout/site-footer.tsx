@@ -6,7 +6,7 @@ import type { SiteSettingsView } from "@/lib/content";
 const SITE_LINKS = [
   { href: "/book", label: "The Book" },
   { href: "/about", label: "About" },
-  { href: "/family-tree", label: "Family Tree" },
+  { href: "/lineage", label: "Lineage" },
   { href: "/author-notes", label: "Author Notes" },
   { href: "/ebook-order", label: "eBook/Paperback Order" },
   { href: "/faq", label: "Questions" },

@@ -12,7 +12,7 @@ export function AuthorNote({ author }: { author: string }) {
         <div className="mx-auto max-w-[44rem] border-l-2 border-accent pl-7 md:pl-10">
           <Reveal>
             <h2 className="font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-0.015em] text-balance">
-              Written by his descendant
+              Written by {author}
             </h2>
             <div className="mt-6 space-y-5 text-[1.0625rem] leading-[1.75] text-fg-soft">
               <p>

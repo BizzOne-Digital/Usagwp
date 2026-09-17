@@ -13,7 +13,7 @@ const MANAGED_PAGES = [
   { key: "home", title: "Home", path: "/" },
   { key: "book", title: "The Book", path: "/book" },
   { key: "about", title: "About", path: "/about" },
-  { key: "team", title: "Family Tree", path: "/family-tree" },
+  { key: "team", title: "Lineage", path: "/lineage" },
   { key: "services", title: "Author Notes", path: "/author-notes" },
   { key: "journal", title: "eBook/Paperback Order", path: "/ebook-order" },
   { key: "faq", title: "Questions", path: "/faq" },
