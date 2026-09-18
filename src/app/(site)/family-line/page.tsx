@@ -12,32 +12,32 @@ import { buttonClasses } from "@/lib/button-classes";
 export async function generateMetadata(): Promise<Metadata> {
   // The SEO key stays "team": it is the stored Page.key, renaming it would
   // orphan any saved override.
-  return generatePageMetadata("team", "/lineage", {
-    title: "Lineage",
+  return generatePageMetadata("team", "/family-line", {
+    title: "LaTanya D. Kelly-Douet Family Line",
     description:
       "The line of descent from Reverend Edmond Kelly, born into slavery in Columbia, Tennessee, in 1817, to the family today.",
   });
 }
 
-export default async function LineagePage() {
+export default async function FamilyLinePage() {
   const [team, settings] = await Promise.all([getPublishedTeam(), getSiteSettings()]);
-  const lineageImage = resolveImageUrl(settings.familyTreeImage);
+  const headerImage = resolveImageUrl(settings.familyTreeImage);
 
   return (
     <>
       <PageHeader
-        title="Lineage"
+        title="LaTanya D. Kelly-Douet Family Line"
         intro="The line of descent from Reverend Edmond Kelly to the family today, traced generation by generation."
       />
 
-      {lineageImage ? (
+      {headerImage ? (
         <section className="bg-bg pt-14 md:pt-16">
           <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
             <Reveal>
               <figure className="mx-auto max-w-[64rem]">
                 <Image
-                  src={lineageImage}
-                  alt={settings.familyTreeImageAlt || "Lineage of Reverend Edmond Kelly"}
+                  src={headerImage}
+                  alt={settings.familyTreeImageAlt || "Family line of Reverend Edmond Kelly"}
                   width={1600}
                   height={1000}
                   sizes="(max-width: 1024px) 100vw, 64rem"
@@ -58,7 +58,7 @@ export default async function LineagePage() {
         <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
           {team.length === 0 ? (
             <EmptyState
-              title="Lineage entries are being prepared"
+              title="Family line entries are being prepared"
               body="Individual records are added here as each one is verified against the archive. In the meantime, Peter Douet can be reached directly."
               action={
                 <Link
@@ -101,24 +101,28 @@ export default async function LineagePage() {
                         {photo ? (
                           <Image
                             src={photo}
-                            alt={`Portrait of ${member.name}`}
+                            alt={member.name ? `Portrait of ${member.name}` : "Family photograph"}
                             width={832}
                             height={576}
                             sizes="(max-width: 768px) 100vw, 26rem"
                             className="h-full w-full object-contain"
                           />
-                        ) : (
+                        ) : member.name ? (
                           <span aria-hidden className="font-display text-3xl text-fg-muted">
                             {member.name.charAt(0)}
                           </span>
-                        )}
+                        ) : null}
                       </div>
 
-                      <h2 className="mt-6 font-display text-[1.75rem] leading-tight text-fg">
-                        {member.name}
-                      </h2>
+                      {member.name ? (
+                        <h2 className="mt-6 font-display text-[1.75rem] leading-tight text-fg">
+                          {member.name}
+                        </h2>
+                      ) : null}
                       {member.role ? (
-                        <p className="mt-1 text-sm text-accent">{member.role}</p>
+                        <p className={member.name ? "mt-1 text-sm text-accent" : "mt-6 text-sm text-accent"}>
+                          {member.role}
+                        </p>
                       ) : null}
                       {member.shortBio ? (
                         <p className="mt-4 max-w-[56ch] text-[1.0625rem] leading-relaxed text-fg-soft">

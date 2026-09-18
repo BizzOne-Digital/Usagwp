@@ -122,7 +122,7 @@ const LinkSchema = new Schema(
 
 const TeamMemberSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, default: "" },
     role: { type: String, default: "" },
     photo: { type: String, default: "" },
     shortBio: { type: String, default: "" },
@@ -208,7 +208,7 @@ const SiteSettingsSchema = new Schema(
     defaultSeoDescription: { type: String, default: "" },
     defaultOgImage: { type: String, default: "" },
     footerText: { type: String, default: "" },
-    // Single image shown at the top of the public Lineage page. Field name kept
+    // Single image shown at the top of the public Family Line page. Field name kept
     // from when the section was called Family Tree.
     familyTreeImage: { type: String, default: "" },
     familyTreeImageAlt: { type: String, default: "" },

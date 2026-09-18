@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata("about", "/about", {
     title: "About the project",
     description:
-      "Edmond Kelly exists to preserve the record of Reverend Edmond Kelly, born into slavery in Columbia, Tennessee, in 1817, and to bring his story to readers through the work of his descendant Peter Douet.",
+      "Edmond Kelly exists to preserve the record of Reverend Edmond Kelly, born into slavery in Columbia, Tennessee, in 1817, and to bring his story to readers through the work of Peter Douet and his late wife LaTanya D. Kelly-Douet, Edmond Kelly's descendant.",
   });
 }
 
@@ -54,9 +54,10 @@ export default async function AboutPage() {
               </h2>
               <div className="mt-5 space-y-5 text-[1.0625rem] leading-[1.75] text-fg-soft">
                 <p>
-                  {book.author} is Edmond Kelly&rsquo;s descendant. This is his family history,
-                  and the book is the form he has chosen to keep it in. That is what separates
-                  it from a study written at a distance: the line it traces did not end.
+                  Edmond Kelly&rsquo;s descendant is LaTanya D. Kelly-Douet, {book.author}
+                  &rsquo;s late wife. This is her family history, and after her passing in 2020
+                  he continued the work she had begun. That is what separates it from a study
+                  written at a distance: the line it traces did not end.
                 </p>
               </div>
             </Reveal>

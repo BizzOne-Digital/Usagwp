@@ -21,7 +21,7 @@ export default async function CollectionListPage({ params }: Props) {
       const docs = await config.model.find({}).sort(config.sort).limit(500).lean();
       return docs.map((doc) => ({
         id: String(doc._id),
-        primary: String(doc[config.listPrimary] ?? "Untitled"),
+        primary: String(doc[config.listPrimary] || "Untitled"),
         secondary: config.listSecondary ? String(doc[config.listSecondary] ?? "") : "",
         published: doc[config.publishField.name] === config.publishField.publishedValue,
         publicPath: config.publicPath ? config.publicPath(doc) : null,

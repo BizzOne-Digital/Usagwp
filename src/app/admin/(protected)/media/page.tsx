@@ -65,7 +65,7 @@ export default async function AdminMediaPage({ searchParams }: Props) {
       ) : files.length === 0 && !activeFolder && !search ? (
         <AdminEmptyState
           title="No files have been uploaded yet"
-          body="Images uploaded from the book, Author Notes, Lineage and eBook/Paperback Order editors appear here automatically."
+          body="Images uploaded from the book, Author Notes, Family Line and eBook/Paperback Order editors appear here automatically."
         />
       ) : (
         <MediaLibrary

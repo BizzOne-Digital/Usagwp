@@ -1,9 +1,9 @@
 import { Reveal } from "@/components/marketing/reveal";
 
 /**
- * Positions Peter Douet as the descendant preserving the record. Deliberately
+ * Positions Peter Douet as the one continuing his late wife’s work. Deliberately
  * short: no biography is invented here. Once the client adds a photo and bio in
- * the CMS team section, that page carries the fuller account.
+ * the CMS Family Line section, that page carries the fuller account.
  */
 export function AuthorNote({ author }: { author: string }) {
   return (
@@ -16,13 +16,14 @@ export function AuthorNote({ author }: { author: string }) {
             </h2>
             <div className="mt-6 space-y-5 text-[1.0625rem] leading-[1.75] text-fg-soft">
               <p>
-                {author} is the author of One Thread in the Fabric of Freedom. Edmond Kelly is
-                his ancestor, and this book is the record of that line: a family history kept,
-                traced and set down so that it is not lost.
+                {author} is the author and compiler of One Thread in the Fabric of Freedom.
+                The book preserves the family history of his late wife, LaTanya D.
+                Kelly-Douet, a descendant of Reverend Edmond Kelly.
               </p>
               <p>
-                It is a work of biography and history, drawn from the life of a man who was
-                born owned and who died free, having freed the people he loved.
+                After LaTanya&apos;s passing in 2020, Peter continued the work she began,
+                preserving Edmond Kelly&apos;s remarkable story for their children, their
+                family, and future generations.
               </p>
             </div>
           </Reveal>

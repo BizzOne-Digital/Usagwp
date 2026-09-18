@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/book", label: "The Book" },
   { href: "/about", label: "About" },
-  { href: "/lineage", label: "Lineage" },
+  { href: "/family-line", label: "LaTanya D. Kelly-Douet Family Line" },
   { href: "/author-notes", label: "Author Notes" },
   { href: "/contact", label: "Contact" },
 ] as const;

@@ -72,7 +72,7 @@ export default async function CollectionRecordPage({ params, searchParams }: Pro
 
   const title = isNew
     ? `New ${config.singular.toLowerCase()}`
-    : String(record?.[config.listPrimary] ?? config.singular);
+    : String(record?.[config.listPrimary] || config.singular);
 
   return (
     <>

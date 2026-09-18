@@ -141,11 +141,11 @@ const COLLECTIONS: CollectionConfig[] = [
     ],
   },
   {
-    slug: "lineage",
-    singular: "Lineage entry",
-    plural: "Lineage",
+    slug: "family-line",
+    singular: "Family line entry",
+    plural: "LaTanya D. Kelly-Douet Family Line",
     description:
-      "One entry per person in the line of descent, in order. Only published entries appear on the public Lineage page. Nothing is invented: the page shows exactly what is entered here.",
+      "One entry per person in the line of descent, in order. Only published entries appear on the public LaTanya D. Kelly-Douet Family Line page. Nothing is invented: the page shows exactly what is entered here.",
     model: TeamMember as unknown as Model<Record<string, unknown>>,
     schema: teamMemberSchema,
     listPrimary: "name",
@@ -153,9 +153,9 @@ const COLLECTIONS: CollectionConfig[] = [
     publishField: { name: "published", publishedValue: true, label: "Published" },
     sort: { sortOrder: 1, name: 1 },
     imageFields: ["photo"],
-    revalidate: ["/lineage"],
+    revalidate: ["/family-line"],
     fields: [
-      { name: "name", label: "Full name", type: "text", required: true },
+      { name: "name", label: "Full name", type: "text" },
       {
         name: "role",
         label: "Place in the family",

@@ -101,7 +101,7 @@ export const serviceSchema = z.object({
 });
 
 export const teamMemberSchema = z.object({
-  name: trimmed(160).min(1, "A name is required."),
+  name: optionalText(160),
   role: optionalText(160),
   photo: imageRefSchema,
   shortBio: optionalText(400),

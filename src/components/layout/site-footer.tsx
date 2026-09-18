@@ -6,7 +6,7 @@ import type { SiteSettingsView } from "@/lib/content";
 const SITE_LINKS = [
   { href: "/book", label: "The Book" },
   { href: "/about", label: "About" },
-  { href: "/lineage", label: "Lineage" },
+  { href: "/family-line", label: "LaTanya D. Kelly-Douet Family Line" },
   { href: "/author-notes", label: "Author Notes" },
   { href: "/ebook-order", label: "eBook/Paperback Order" },
   { href: "/faq", label: "Questions" },

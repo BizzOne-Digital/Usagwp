@@ -34,7 +34,7 @@ const SECTIONS = [
       { href: "/admin/book", label: "The Book", icon: BookOpen },
       { href: "/admin/pages", label: "Pages and SEO", icon: FileText },
       { href: "/admin/author-notes", label: "Author Notes", icon: Wrench },
-      { href: "/admin/lineage", label: "Lineage", icon: Users },
+      { href: "/admin/family-line", label: "Family Line", icon: Users },
       { href: "/admin/ebook-order", label: "eBook/Paperback Order", icon: FileText },
       { href: "/admin/faqs", label: "Questions", icon: Question },
       { href: "/admin/testimonials", label: "Testimonials", icon: ChatCircleText },

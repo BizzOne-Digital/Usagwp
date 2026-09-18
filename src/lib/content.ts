@@ -173,7 +173,7 @@ export const SITE_SETTINGS_FALLBACK: SiteSettingsView = {
   siteName: "Edmond Kelly",
   tagline: "One Thread in the Fabric of Freedom",
   siteDescription:
-    "Edmond Kelly preserves and shares the true story of Reverend Edmond Kelly, told by his descendant Peter Douet in the forthcoming book One Thread in the Fabric of Freedom.",
+    "Edmond Kelly preserves and shares the true story of Reverend Edmond Kelly, set down by Peter Douet in the forthcoming book One Thread in the Fabric of Freedom, continuing the work of his late wife LaTanya D. Kelly-Douet, Edmond Kelly's descendant.",
   logo: "",
   email: "support@usagwp.com",
   phone: "9165009232",
