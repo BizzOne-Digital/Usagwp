@@ -54,10 +54,15 @@ export default async function AboutPage() {
               </h2>
               <div className="mt-5 space-y-5 text-[1.0625rem] leading-[1.75] text-fg-soft">
                 <p>
-                  Edmond Kelly&rsquo;s descendant is LaTanya D. Kelly-Douet, {book.author}
-                  &rsquo;s late wife. This is her family history, and after her passing in 2020
-                  he continued the work she had begun. That is what separates it from a study
-                  written at a distance: the line it traces did not end.
+                  {book.author} is the author and compiler of {book.title}. Reverend Edmond
+                  Kelly is an ancestor of Peter&rsquo;s late wife, LaTanya D. Kelly-Douet.
+                  After LaTanya&rsquo;s passing in 2020, Peter continued the work of preserving
+                  her family&rsquo;s history and Edmond Kelly&rsquo;s remarkable legacy for
+                  their children, the Kelly family, and future generations.
+                </p>
+                <p>
+                  That is what separates it from a study written at a distance: the line it
+                  traces did not end.
                 </p>
               </div>
             </Reveal>
