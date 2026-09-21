@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { EmptyState, PageHeader } from "@/components/marketing/page-header";
 import { Reveal } from "@/components/marketing/reveal";
 import { getPublishedTeam, getSiteSettings } from "@/lib/content";
+import { withItalics } from "@/lib/format";
 import { generatePageMetadata } from "@/lib/seo";
 import { resolveImageUrl } from "@/lib/uploads/resolve-image-url";
 import { buttonClasses } from "@/lib/button-classes";
@@ -70,7 +71,23 @@ export default async function FamilyLinePage() {
               }
             />
           ) : (
-            <ol className="mx-auto flex max-w-[42rem] flex-col items-center">
+            <>
+              {settings.familyLineHeading || settings.familyLineSubheading ? (
+                <Reveal className="mx-auto mb-10 max-w-[42rem] text-center">
+                  {settings.familyLineHeading ? (
+                    <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-medium leading-tight text-fg">
+                      {settings.familyLineHeading}
+                    </h2>
+                  ) : null}
+                  {settings.familyLineSubheading ? (
+                    <p className="mt-2 text-[0.9375rem] italic leading-relaxed text-fg-muted">
+                      {settings.familyLineSubheading}
+                    </p>
+                  ) : null}
+                </Reveal>
+              ) : null}
+
+              <ol className="mx-auto flex max-w-[42rem] flex-col items-center">
               {team.map((member, index) => {
                 const photo = resolveImageUrl(member.photo);
                 return (
@@ -126,7 +143,7 @@ export default async function FamilyLinePage() {
                       ) : null}
                       {member.shortBio ? (
                         <p className="mt-4 max-w-[56ch] text-[1.0625rem] leading-relaxed text-fg-soft">
-                          {member.shortBio}
+                          {withItalics(member.shortBio)}
                         </p>
                       ) : null}
                       {member.bio ? (
@@ -154,7 +171,8 @@ export default async function FamilyLinePage() {
                   </li>
                 );
               })}
-            </ol>
+              </ol>
+            </>
           )}
         </div>
       </section>

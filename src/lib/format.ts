@@ -1,3 +1,5 @@
+import { createElement, type ReactNode } from "react";
+
 export function formatPrice(value: number, currency = "USD"): string {
   try {
     return new Intl.NumberFormat("en-US", {
@@ -32,6 +34,22 @@ export function formatShortDate(value: string | Date | null | undefined): string
     day: "numeric",
     timeZone: "UTC",
   }).format(date);
+}
+
+/**
+ * Renders *asterisked* runs as italics.
+ *
+ * Deliberately the only markup supported, and deliberately not HTML: this
+ * returns React nodes, so nothing an editor types can inject markup. Unmatched
+ * or empty asterisks are left as literal text.
+ */
+export function withItalics(value: string | null | undefined): ReactNode[] {
+  if (!value) return [];
+  return value.split(/(\*[^*\n]+\*)/g).map((part, index) =>
+    part.length > 2 && part.startsWith("*") && part.endsWith("*")
+      ? createElement("em", { key: index }, part.slice(1, -1))
+      : part,
+  );
 }
 
 /** Splits a stored plain-text field into paragraphs for rendering. */

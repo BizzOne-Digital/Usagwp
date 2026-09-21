@@ -168,7 +168,7 @@ const COLLECTIONS: CollectionConfig[] = [
         label: "Short summary",
         type: "textarea",
         rows: 3,
-        hint: "Dates, place, and one line on who they were.",
+        hint: "Dates, place, and one line on who they were. Wrap words in *asterisks* for italics.",
       },
       { name: "bio", label: "Full record", type: "richtext", rows: 8 },
       { name: "email", label: "Email", type: "text", group: "Contact and sources" },

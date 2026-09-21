@@ -31,6 +31,8 @@ export async function saveSettingsAction(
     defaultOgImage: readString(form, "defaultOgImage"),
     footerText: readString(form, "footerText"),
     familyTreeImage: readString(form, "familyTreeImage"),
+    familyLineHeading: readString(form, "familyLineHeading"),
+    familyLineSubheading: readString(form, "familyLineSubheading"),
     familyTreeImageAlt: readString(form, "familyTreeImageAlt"),
     analyticsId: readString(form, "analyticsId"),
   });

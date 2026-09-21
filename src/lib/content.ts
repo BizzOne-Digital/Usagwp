@@ -166,6 +166,8 @@ export type SiteSettingsView = {
   defaultOgImage: string;
   footerText: string;
   familyTreeImage: string;
+  familyLineHeading: string;
+  familyLineSubheading: string;
   familyTreeImageAlt: string;
 };
 
@@ -183,6 +185,8 @@ export const SITE_SETTINGS_FALLBACK: SiteSettingsView = {
   defaultOgImage: "",
   footerText: "",
   familyTreeImage: "",
+  familyLineHeading: "THE KELLY FAMILY LINE",
+  familyLineSubheading: "The ancestry of LaTanya D. Kelly-Douet",
   familyTreeImageAlt: "",
 };
 
@@ -213,6 +217,8 @@ export async function getSiteSettings(): Promise<SiteSettingsView> {
         defaultOgImage: doc.defaultOgImage ?? "",
         footerText: doc.footerText ?? "",
         familyTreeImage: doc.familyTreeImage ?? "",
+        familyLineHeading: doc.familyLineHeading ?? "",
+        familyLineSubheading: doc.familyLineSubheading ?? "",
         familyTreeImageAlt: doc.familyTreeImageAlt ?? "",
       } satisfies SiteSettingsView;
     },

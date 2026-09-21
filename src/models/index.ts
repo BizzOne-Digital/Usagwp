@@ -211,6 +211,8 @@ const SiteSettingsSchema = new Schema(
     // Single image shown at the top of the public Family Line page. Field name kept
     // from when the section was called Family Tree.
     familyTreeImage: { type: String, default: "" },
+    familyLineHeading: { type: String, default: "" },
+    familyLineSubheading: { type: String, default: "" },
     familyTreeImageAlt: { type: String, default: "" },
     analyticsId: { type: String, default: "" },
   },

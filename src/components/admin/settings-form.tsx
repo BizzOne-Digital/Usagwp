@@ -141,6 +141,18 @@ export function SettingsForm({
             defaultValue={settings.familyTreeImageAlt}
             hint="Describes the image for screen readers and search engines."
           />
+          <TextField
+            name="familyLineHeading"
+            label="Heading above the first photograph"
+            defaultValue={settings.familyLineHeading}
+            hint="Shown exactly as typed. Leave it empty to hide the heading."
+          />
+          <TextField
+            name="familyLineSubheading"
+            label="Line under that heading"
+            defaultValue={settings.familyLineSubheading}
+            hint="Shown in italics, smaller than the body text. Leave it empty to hide it."
+          />
         </div>
       </Panel>
 

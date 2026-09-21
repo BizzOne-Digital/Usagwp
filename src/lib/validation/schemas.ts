@@ -168,6 +168,8 @@ export const siteSettingsSchema = z.object({
   defaultOgImage: imageRefSchema,
   footerText: optionalText(600),
   familyTreeImage: imageRefSchema,
+  familyLineHeading: optionalText(160),
+  familyLineSubheading: optionalText(300),
   familyTreeImageAlt: optionalText(200),
   analyticsId: optionalText(60),
 });
