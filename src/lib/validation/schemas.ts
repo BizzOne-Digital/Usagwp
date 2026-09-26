@@ -34,20 +34,30 @@ export const linkSchema = z.object({
 
 /* --------------------------------------------------------------- public --- */
 
+/**
+ * Honeypot. Real people never fill this in, so any value means a bot.
+ *
+ * It has to ACCEPT the value rather than reject it. The handlers answer a
+ * filled honeypot with a fake success and discard the submission, which only
+ * works if parsing got that far: a `max(0)` rule failed first and returned
+ * `fieldErrors.website`, naming the trap for whatever filled it. The length
+ * cap is just to bound the payload.
+ */
+const honeypot = z.string().trim().max(1000).optional().default("");
+
 export const contactSchema = z.object({
   name: trimmed(120).min(2, "Please enter your name."),
   email: z.string().trim().email("Enter a valid email address.").max(200),
   phone: optionalText(40),
   subject: optionalText(160),
   message: trimmed(4000).min(10, "Please tell us a little more."),
-  // Honeypot: real people never fill this in.
-  website: z.string().max(0).optional().default(""),
+  website: honeypot,
 });
 
 export const subscribeSchema = z.object({
   email: z.string().trim().email("Enter a valid email address.").max(200),
   firstName: optionalText(80),
-  website: z.string().max(0).optional().default(""),
+  website: honeypot,
 });
 
 /* ---------------------------------------------------------------- admin --- */

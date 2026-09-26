@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 import { connectToDatabase, isDatabaseConfigured } from "@/lib/db/mongoose";
+import { sendOwnerNotification } from "@/lib/email/mailer";
+import { contactNotification } from "@/lib/email/templates";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { contactSchema } from "@/lib/validation/schemas";
 import { ContactMessage } from "@/models";
@@ -62,6 +64,15 @@ export async function POST(request: Request) {
       subject: parsed.data.subject,
       message: parsed.data.message,
     });
+
+    /**
+     * The stored message is the record of receipt, so the reply to the sender
+     * stays "received" whatever SMTP does. The notification is a convenience
+     * on top: a failure is logged for the owner and never surfaced to the
+     * person writing in, who has genuinely been heard either way.
+     */
+    await sendOwnerNotification(contactNotification(parsed.data));
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("[usagwp] contact submission failed", error);

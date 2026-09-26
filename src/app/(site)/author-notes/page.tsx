@@ -49,16 +49,18 @@ export default async function AuthorNotesPage() {
                 return (
                   <Reveal key={service.id} delay={Math.min(index, 4) * 0.05}>
                     <article>
+                      {/* No fixed aspect and no cover-crop: a portrait book cover
+                          in a 16:10 box lost its top and bottom. The file decides
+                          the ratio. */}
                       {image ? (
-                        <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-sm">
-                          <Image
-                            src={image}
-                            alt={service.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 44vw"
-                            className="object-cover"
-                          />
-                        </div>
+                        <Image
+                          src={image}
+                          alt={service.title}
+                          width={0}
+                          height={0}
+                          sizes="(max-width: 768px) 100vw, 44vw"
+                          className="mb-6 h-auto w-full rounded-sm"
+                        />
                       ) : null}
                       <h2 className="font-display text-[1.75rem] leading-tight">
                         <Link

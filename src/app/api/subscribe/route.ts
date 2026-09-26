@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 import { connectToDatabase, isDatabaseConfigured } from "@/lib/db/mongoose";
+import { sendOwnerNotification } from "@/lib/email/mailer";
+import { subscriberNotification } from "@/lib/email/templates";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { subscribeSchema } from "@/lib/validation/schemas";
 import { Subscriber } from "@/models";
@@ -50,11 +52,12 @@ export async function POST(request: Request) {
     await connectToDatabase();
 
     /**
-     * Subscribers are stored here only. No email provider is configured, so the
-     * site never claims a confirmation message has been sent. Wiring a provider
-     * later is a change to this handler alone.
+     * The upsert is what keeps the list free of duplicates, and its result is
+     * also how we know whether this was a new person: `upsertedCount` is 1 only
+     * on insert. Re-submitting an existing address therefore updates nothing
+     * and sends no second notification.
      */
-    await Subscriber.updateOne(
+    const result = await Subscriber.updateOne(
       { email: parsed.data.email },
       {
         $setOnInsert: {
@@ -65,6 +68,17 @@ export async function POST(request: Request) {
       },
       { upsert: true },
     );
+
+    // Saved first, notified second: a refused SMTP connection must never cost
+     // us the subscriber, who is already in the admin list by this point.
+    if (result.upsertedCount > 0) {
+      await sendOwnerNotification(
+        subscriberNotification({
+          email: parsed.data.email,
+          firstName: parsed.data.firstName,
+        }),
+      );
+    }
 
     return NextResponse.json({ success: true, message: "You are on the list." });
   } catch (error) {

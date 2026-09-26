@@ -61,16 +61,15 @@ export default async function AuthorNoteDetailPage({ params }: Props) {
       <article className="bg-bg py-16 md:py-20">
         <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
           {image ? (
-            <div className="relative mx-auto mb-12 aspect-[16/9] w-full max-w-[56rem] overflow-hidden rounded-sm">
-              <Image
-                src={image}
-                alt={service.title}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 56rem"
-                className="object-cover"
-              />
-            </div>
+            <Image
+              src={image}
+              alt={service.title}
+              width={0}
+              height={0}
+              priority
+              sizes="(max-width: 1024px) 100vw, 56rem"
+              className="mx-auto mb-12 h-auto w-full max-w-[56rem] rounded-sm"
+            />
           ) : null}
 
           <div className="mx-auto max-w-[46rem] space-y-5 text-[1.0625rem] leading-[1.75] text-fg-soft">

@@ -17,6 +17,7 @@
     "jose": "^6.0.11",
     "mongoose": "^8.9.5",
     "next": "^15.5.4",
+    "nodemailer": "^10.0.10",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "zod": "^4.0.5"
@@ -25,6 +26,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^22.15.3",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "eslint": "^9.30.1",
