@@ -32,13 +32,13 @@ export function BookPanel({ book }: { book: BookView }) {
   return (
     <section className="border-b border-line bg-bg-deep py-20 md:py-28">
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:px-10">
-        <Reveal className="mx-auto w-full max-w-[17rem] lg:max-w-none">
+        <Reveal className="mx-auto w-full max-w-[26rem] lg:max-w-none">
           <BookCover
             src={book.coverImage}
             alt={book.coverAlt}
             title={book.title}
             author={book.author}
-            sizes="(max-width: 1024px) 55vw, 26vw"
+            sizes="(max-width: 1024px) 85vw, 30vw"
           />
         </Reveal>
 

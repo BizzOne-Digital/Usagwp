@@ -47,9 +47,10 @@ export function Hero({ book }: { book: BookView }) {
           </div>
         </div>
 
-        {/* The cover is capped so the whole hero stays inside the first
-            viewport at common laptop heights. */}
-        <div className="relative mx-auto w-full max-w-[16rem] sm:max-w-[18rem] lg:mr-0 lg:max-w-[20rem]">
+        {/* Capped so the whole hero stays inside the first viewport at common
+            laptop heights. Wide enough for a landscape cover mockup, which a
+            portrait-sized column shrank to an unreadable strip. */}
+        <div className="relative mx-auto w-full max-w-[22rem] sm:max-w-[26rem] lg:mr-0 lg:max-w-[28rem]">
           {/* The thread motif, introduced here and carried through the page. */}
           <span
             aria-hidden
@@ -62,7 +63,7 @@ export function Hero({ book }: { book: BookView }) {
               title={book.title}
               author={book.author}
               priority
-              sizes="(max-width: 1024px) 60vw, 30vw"
+              sizes="(max-width: 1024px) 80vw, 32vw"
             />
           </div>
         </div>

@@ -17,8 +17,13 @@ type Props = {
  * Renders the real cover once one is uploaded in the CMS. Until then it renders
  * a typographic stand-in built from the book's own metadata rather than a broken
  * image or a grey box, so the page reads as finished while the cover is still at
- * the printer. Both states share the same footprint, so swapping in the artwork
- * causes no layout shift.
+ * the printer.
+ *
+ * The uploaded artwork keeps its own aspect ratio rather than being forced into
+ * the stand-in's 2:3 portrait frame: a landscape mockup showing front and back
+ * covers is a legitimate upload, and cropping it to a portrait slice hid most
+ * of it. width/height of 0 with `sizes` is next/image's documented way to say
+ * "the file decides the ratio" while keeping optimisation.
  */
 export function BookCover({
   src,
@@ -31,26 +36,30 @@ export function BookCover({
 }: Props) {
   const resolved = resolveImageUrl(src);
 
+  const frame = cn(
+    "w-full rounded-sm",
+    "shadow-[0_28px_60px_-24px_rgba(16,25,43,0.45)]",
+    "ring-1 ring-indigo-900/12",
+    className,
+  );
+
+  if (resolved) {
+    return (
+      <Image
+        src={resolved}
+        alt={alt?.trim() || `Cover of ${title} by ${author}`}
+        width={0}
+        height={0}
+        priority={priority}
+        sizes={sizes}
+        className={cn(frame, "h-auto")}
+      />
+    );
+  }
+
   return (
-    <div
-      className={cn(
-        "relative aspect-[2/3] w-full overflow-hidden rounded-sm",
-        "shadow-[0_28px_60px_-24px_rgba(16,25,43,0.45)]",
-        "ring-1 ring-indigo-900/12",
-        className,
-      )}
-    >
-      {resolved ? (
-        <Image
-          src={resolved}
-          alt={alt?.trim() || `Cover of ${title} by ${author}`}
-          fill
-          priority={priority}
-          sizes={sizes}
-          className="object-cover"
-        />
-      ) : (
-        <div className="flex h-full w-full flex-col justify-between bg-indigo-800 p-[7%] text-fg-inverse">
+    <div className={cn(frame, "relative aspect-[2/3] overflow-hidden")}>
+      <div className="flex h-full w-full flex-col justify-between bg-indigo-800 p-[7%] text-fg-inverse">
           <span
             aria-hidden
             className="thread-rule h-full w-px absolute left-[13%] top-0 opacity-70"
@@ -64,8 +73,7 @@ export function BookCover({
           <p className="relative font-sans text-[0.7rem] uppercase tracking-[0.22em] text-indigo-100/85">
             {author}
           </p>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
